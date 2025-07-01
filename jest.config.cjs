@@ -11,6 +11,9 @@ const config = {
   collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
+  transform: {
+    '^.+\\.(ts|tsx)$': 'ts-jest',
+  },
 };
 
 module.exports = config;
