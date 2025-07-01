@@ -14,13 +14,13 @@ The project has completed the initial setup phase. The TypeScript project using 
 - **Testing Setup**: Jest is configured for TypeScript with a test script added to package.json, ready for TDD cycles.
 
 ## What's Left to Build
+- [x] Add visualization for existing organization
 - Split agent definition from org definition
 - **Core Simulation Logic**: Implement pure functions with integrated testing for each increment following Test-Driven Development (TDD):
   - Organizational state management (n-dimensional vectors and graph structures for traditional and agile setups), starting with a failing test for state initialization, then implementing minimal logic to pass.
   - Agent behavior (idea generation, act, delegate, break down, reject) as declarative state transformations, with tests written before each behavior implementation.
   - Goal dynamics with configurable change frequencies, tested for correct state updates on change triggers.
   - Simulation engine to manage time steps and state transitions, with tests ensuring correct progression and state handling.
-- **Visualization Layer**: Develop React components and D3.js visualizations to render organizational graphs and project multi-dimensional movement for user interaction, with tests for rendering correctness and parameter updates.
 - **Performance Metrics**: Create functions to calculate and compare metrics (time to goal, efficiency, delegation frequency, rejection rates) for traditional vs. agile organizations under varying conditions (goal dimensionality 2-10, change frequency), with tests validating metric accuracy.
 - **Deployment**: Configure and deploy the application to GitHub Pages for public access, ensuring deployment scripts are tested for successful builds.
 - Review the dependencies and remove unnecessary ones
@@ -36,10 +36,4 @@ The project has completed the initial setup phase. The TypeScript project using 
 - **Testing Integration**: User requested testing be integrated into each feature development step rather than as a separate work package, aligning with TDD principles.
 - **Project Location**: User moved the Vite project content to the repository root to simplify structure, which was accounted for during dependency installation.
 
-## Next Immediate Steps (Following TDD and Tidy First)
-1. ~~Write the first failing test for organizational state initialization (behavioral change).~~ [Completed]
-2. ~~Implement minimal logic to pass the test, focusing on immutable data structures (behavioral change).~~ [Completed]
-3. Refactor if necessary, separating structural changes from behavioral ones in commits.
-4. Update `progress.md` and `activeContext.md` with each increment to reflect new functionality and next tasks.
-5. Write the next failing test for adding agents with capability vectors to the organizational state (behavioral change).
-6. Implement minimal logic to pass the test for agent initialization (behavioral change).
+

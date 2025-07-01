@@ -1,37 +1,27 @@
-# Active Context: Organizational Simulation
+# Active Context for Organizational Simulation
 
-## Current Work Focus
-The project has completed the initial setup and the first TDD cycle for organizational state initialization. The focus is now on continuing Test-Driven Development (TDD) cycles for core models, specifically adding agents with capability vectors to the organizational state.
+## Current Focus
+- Successfully implemented the visualization of organizational structures using D3.js in the `OrganizationGraph` component.
+- Focus on integrating the visualization component into the main application for real-time rendering of organizational changes.
 
 ## Recent Changes
-- Created `projectbrief.md` to outline the project's core requirements, goals, and development approach.
-- Created `productContext.md` to define the purpose, problems addressed, intended functionality, user experience goals, and target audience.
-- Initialized Vite project with React and TypeScript at the repository root.
-- Installed necessary dependencies including D3.js for visualization and Jest for testing.
-- Configured Jest for TypeScript, resolving issues with ES module scope by renaming configuration files to use '.cjs' extension.
-- Confirmed that 'jest-environment-jsdom' is installed for proper test environment setup.
-- Wrote and passed the first failing test for organizational state initialization using immutable data structures (n-dimensional vectors and graph structures).
-- Implemented minimal logic in `src/simulation/state.ts` to pass the test, adhering to functional programming principles.
-- Updated Jest configuration to support TypeScript with `ts-jest` and installed necessary dependencies for testing.
+- Added `OrganizationGraph` component in `src/simulation/visualization.tsx` to render a force-directed graph of nodes (employees) and edges (reporting lines) based on `OrganizationalState`.
+- Created and passed a test in `src/simulation/visualization.test.tsx` to verify rendering of nodes and edges.
+- Resolved multiple configuration issues with Jest and TypeScript to support D3.js ESM syntax, including installing `@swc/jest` and updating `jest.config.cjs`.
 
 ## Next Steps
-1. Write the next failing test for adding agents with capability vectors to the organizational state (behavioral change).
-2. Implement minimal logic to pass the test for agent initialization, ensuring adherence to functional programming principles (behavioral change).
-3. Refactor if necessary, separating structural changes from behavioral ones in commits.
-4. Update `progress.md` and `activeContext.md` with each increment to reflect new functionality and next tasks.
+- Integrate the `OrganizationGraph` component into the main `App.tsx` or relevant UI sections to display the organizational structure dynamically.
+- Consider additional visualization features such as node labeling, interactive zooming, or color-coding based on capabilities.
+- Write tests for user interactions with the visualization if applicable.
 
 ## Active Decisions and Considerations
-- **Technology Stack**: Using TypeScript with React for the frontend, D3.js for visualization, and Vite for build and deployment processes.
-- **Simulation Parameters**: Organizational size between 5 and 100 agents; goal, idea, and capability dimensions between 2 and 10.
-- **Agent Behaviors**: Include options for agents to act, delegate, break down, or reject ideas/tasks, ensuring realistic dynamics.
-- **Goal Dynamics**: Implement mechanisms for goals to change during simulation runs based on configurable frequencies to test adaptability.
+- Using D3.js for visualization due to its powerful force-directed layout capabilities, suitable for hierarchical data.
+- Decision to manually tick the simulation in tests to avoid asynchronous rendering issues; may revisit for real-time updates in the application.
 
 ## Important Patterns and Preferences
-- Adherence to TDD cycle (Red → Green → Refactor) for all development increments.
-- Separation of structural, behavioral, and meta changes in commits as per Tidy First principles.
-- High priority on documentation to maintain project continuity across memory resets, updating Memory Bank files with each significant change or user request.
+- Continue following TDD principles by writing tests for new visualization features before implementation.
+- Maintain separation of structural and behavioral changes in commits, ensuring tests pass before and after structural refactoring.
 
 ## Learnings and Project Insights
-- Early planning has highlighted the importance of a robust visualization layer to make simulation results accessible and insightful to users.
-- The inclusion of goal change triggers and agent rejection options adds depth to the simulation, potentially revealing nuanced differences between organizational types.
-- Ensuring compatibility with ES modules required adjustments to Jest configuration files, emphasizing the need for attention to module system details in modern JavaScript projects.
+- Configuring Jest to handle ESM modules from `node_modules` (like D3.js) requires specific transformer settings; `@swc/jest` was effective for this project.
+- TypeScript configuration challenges with `esModuleInterop` highlighted the importance of consistent import styles across the codebase.

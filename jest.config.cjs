@@ -12,8 +12,11 @@ const config = {
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': '@swc/jest',
   },
+  transformIgnorePatterns: [
+    '/node_modules/(?!d3)/'
+  ],
 };
 
 module.exports = config;
