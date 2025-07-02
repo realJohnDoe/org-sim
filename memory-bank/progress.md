@@ -26,7 +26,7 @@ The project has progressed with the integration of UI controls and visualization
   - Goal dynamics with configurable change frequencies, tested for correct state updates on change triggers.
   - Simulation engine to manage time steps and state transitions, with tests ensuring correct progression and state handling.
 - **Performance Metrics**: Create functions to calculate and compare metrics (time to goal, efficiency, delegation frequency, rejection rates) for traditional vs. agile organizations under varying conditions (goal dimensionality 2-10, change frequency), with tests validating metric accuracy.
-- **Deployment**: Configure and deploy the application to GitHub Pages for public access, ensuring deployment scripts are tested for successful builds.
+- **Deployment**: The application has been successfully deployed to GitHub Pages using the workflow at `github/workflows/pages.yml`, tested for public access.
 - Review the dependencies and remove unnecessary ones.
 
 ## Known Issues

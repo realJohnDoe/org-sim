@@ -7,7 +7,7 @@
 - Updating Memory Bank documentation to reflect the current state and plan next steps for agent behavior implementation.
 
 ## Recent Changes
-- Added a GitHub Actions workflow for automated deployment to GitHub Pages, configured in `.github/workflows/deploy.yml`. Updated `vite.config.ts` to set the base path for GitHub Pages as '/org-sim/'.
+- Updated GitHub Actions workflow reference to `github/workflows/pages.yml` for automated deployment to GitHub Pages, which has been successfully tested on mobile devices. Updated `vite.config.ts` to set the base path for GitHub Pages as '/org-sim/'.
 - Added a slider UI element in `App.tsx` for setting the number of direct reports per manager (range 2 to 5), updating the organizational state initialization to use this dynamic value.
 - Updated `src/simulation/visualization.tsx` to change edge color to dark grey ("#333") and increased stroke width to 2.5 for better visibility.
 - Corrected edge rendering logic in `src/simulation/visualization.tsx` to use direct references from D3's simulation data for accurate positioning.

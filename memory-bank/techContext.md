@@ -40,4 +40,4 @@
 - **React Components**: Developed declaratively, mapping simulation state to UI elements, with minimal local state to maintain functional purity.
 - **D3.js Integration**: Used within React components via hooks or lifecycle methods to bind simulation data to SVG elements, ensuring visualizations update with state changes.
 - **Documentation Updates**: Memory Bank files updated after significant changes or user requests using Markdown, with VSCode or similar editors for easy editing and preview.
-- **GitHub Actions**: A workflow is set up in `.github/workflows/deploy.yml` to automatically deploy the application to GitHub Pages on push to the main branch.
+- **GitHub Actions**: A workflow is set up in `github/workflows/pages.yml` to automatically deploy the application to GitHub Pages on push to the main branch.
