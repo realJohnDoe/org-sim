@@ -29,8 +29,29 @@ const OrganizationGraph: React.FC<OrganizationGraphProps> = ({ state }) => {
     // Manually tick the simulation to avoid animation for simplicity
     for (let i = 0; i < 300; ++i) simulation.tick();
 
+    // Calculate bounding box to adjust zoom and translation
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    state.graph.nodes.forEach(node => {
+      const x = (node as any).x || 0;
+      const y = (node as any).y || 0;
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+    });
+    
+    const graphWidth = maxX - minX;
+    const graphHeight = maxY - minY;
+    const scale = Math.min(width / graphWidth, height / graphHeight) * 0.9; // 0.9 for padding
+    const translateX = (width / 2) - ((minX + maxX) / 2) * scale;
+    const translateY = (height / 2) - ((minY + maxY) / 2) * scale;
+
+    // Create a group for all elements with transform for zoom and pan
+    const g = svg.append("g")
+      .attr("transform", `translate(${translateX},${translateY}) scale(${scale})`);
+
     // Draw edges
-    svg.append("g")
+    g.append("g")
       .attr("stroke", "#333")
       .attr("stroke-width", 2.5)
       .selectAll("line")
@@ -44,7 +65,7 @@ const OrganizationGraph: React.FC<OrganizationGraphProps> = ({ state }) => {
       .attr("y2", (d: any) => d.target.y || 0);
 
     // Draw nodes
-    svg.append("g")
+    g.append("g")
       .attr("fill", "#1f77b4")
       .selectAll("circle")
       .data(state.graph.nodes as d3.SimulationNodeDatum[])
