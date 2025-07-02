@@ -18,8 +18,6 @@ The project has progressed beyond initial setup, with the visualization of organ
 - Integrate another slider for the number of direct reports per manager
 - Implement first version of acting: submitting a product graph to be checked against the demand graph
 - Split agent definition from org definition
-- Implement first version of acting: submitting a product graph to be checked against the demand graph.
-- Split agent definition from org definition.
 - **Core Simulation Logic**: Implement pure functions with integrated testing for each increment following Test-Driven Development (TDD):
   - Agent behavior (idea generation, act, delegate, break down, reject) as declarative state transformations, with tests written before each behavior implementation.
   - Goal dynamics with configurable change frequencies, tested for correct state updates on change triggers.
