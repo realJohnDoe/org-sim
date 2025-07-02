@@ -19,7 +19,7 @@ function App() {
             id="orgSizeSlider"
             type="range"
             min="5"
-            max="50"
+            max="100"
             value={orgSize}
             onChange={(e) => setOrgSize(parseInt(e.target.value))}
             style={{ width: '300px', marginLeft: '10px' }}
@@ -30,8 +30,8 @@ function App() {
           <input
             id="directReportsSlider"
             type="range"
-            min="2"
-            max="5"
+            min="3"
+            max="20"
             value={directReports}
             onChange={(e) => setDirectReports(parseInt(e.target.value))}
             style={{ width: '300px', marginLeft: '10px' }}

@@ -13,8 +13,8 @@ const OrganizationGraph: React.FC<OrganizationGraphProps> = ({ state }) => {
     if (!svgRef.current || !state) return;
 
     const svg = d3.select(svgRef.current);
-    const width = svg.node()?.clientWidth || 300;
-    const height = svg.node()?.clientHeight || 200;
+    const width = svg.node()?.clientWidth || 800;
+    const height = svg.node()?.clientHeight || 600;
 
     // Clear previous rendering
     svg.selectAll("*").remove();
@@ -22,7 +22,7 @@ const OrganizationGraph: React.FC<OrganizationGraphProps> = ({ state }) => {
     // Create a force simulation for layout
     const simulation = d3.forceSimulation(state.graph.nodes as d3.SimulationNodeDatum[])
       .force("link", d3.forceLink(state.graph.edges).id((d: any) => d.id).distance(40))
-      .force("charge", d3.forceManyBody().strength(-30))
+      .force("charge", d3.forceManyBody().strength(-20))
       .force("center", d3.forceCenter(width / 2, height / 2))
       .stop();
 
