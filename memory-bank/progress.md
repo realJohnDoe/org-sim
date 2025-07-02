@@ -1,7 +1,7 @@
 # Progress: Organizational Simulation
 
 ## Current Status
-The project has progressed beyond initial setup, with the visualization of organizational structures integrated into the main application. A dynamic slider for adjusting organizational size (5 to 50 nodes) has been added to `App.tsx`. Core simulation logic and agent behaviors are yet to be implemented, following TDD principles.
+The project has progressed beyond initial setup, with the visualization of organizational structures integrated into the main application. A dynamic slider for adjusting organizational size (5 to 50 nodes) has been added to `App.tsx`. The initialization algorithm for organizational hierarchy has been simplified, and test logic has been updated to correctly define hierarchy levels. Core simulation logic and agent behaviors are yet to be implemented, following TDD principles.
 
 ## What Works
 - **Documentation Foundation**: The following Memory Bank files have been successfully created and populated with initial content:
@@ -13,11 +13,13 @@ The project has progressed beyond initial setup, with the visualization of organ
 - **Project Initialization**: Vite project with React and TypeScript is set up at the repository root with necessary dependencies installed.
 - **Testing Setup**: Jest is configured for TypeScript with a test script added to package.json, ready for TDD cycles.
 - **Visualization Integration**: The `OrganizationGraph` component is integrated into `App.tsx`, rendering a force-directed graph of organizational structures using D3.js, with a slider to adjust the number of nodes dynamically.
+- **Hierarchy Initialization**: Simplified edge generation logic in `src/simulation/state.ts` to create a balanced organizational hierarchy based on a specified number of direct reports per manager.
+- **Test Updates**: Updated test logic in `src/simulation/state.test.ts` to correctly identify deeper hierarchy levels by checking for nodes not directly reporting to the root manager, with all tests passing.
 
 ## What's Left to Build
-- Integrate another slider for the number of direct reports per manager
-- Implement first version of acting: submitting a product graph to be checked against the demand graph
-- Split agent definition from org definition
+- Integrate another slider for the number of direct reports per manager to allow dynamic adjustment of hierarchy depth.
+- Implement first version of acting: submitting a product graph to be checked against the demand graph.
+- Split agent definition from org definition.
 - **Core Simulation Logic**: Implement pure functions with integrated testing for each increment following Test-Driven Development (TDD):
   - Agent behavior (idea generation, act, delegate, break down, reject) as declarative state transformations, with tests written before each behavior implementation.
   - Goal dynamics with configurable change frequencies, tested for correct state updates on change triggers.
@@ -36,3 +38,4 @@ The project has progressed beyond initial setup, with the visualization of organ
 - **Documentation Priority**: User emphasized setting up the Memory Bank first, ensuring all context is captured before coding begins, aligning with guidelines for memory reset continuity.
 - **Testing Integration**: User requested testing be integrated into each feature development step rather than as a separate work package, aligning with TDD principles.
 - **Project Location**: User moved the Vite project content to the repository root to simplify structure, which was accounted for during dependency installation.
+- **Hierarchy Definition**: Updated test logic to reflect the user's definition of hierarchy levels, ensuring accurate validation of organizational structure.
