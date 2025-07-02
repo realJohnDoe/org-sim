@@ -1,7 +1,7 @@
 # Progress: Organizational Simulation
 
 ## Current Status
-The project has progressed beyond initial setup, with the visualization of organizational structures integrated into the main application. A dynamic slider for adjusting organizational size (5 to 50 nodes) has been added to `App.tsx`. The initialization algorithm for organizational hierarchy has been simplified, and test logic has been updated to correctly define hierarchy levels. Core simulation logic and agent behaviors are yet to be implemented, following TDD principles.
+The project has progressed with the integration of UI controls and visualization enhancements for organizational structures. A dynamic slider for adjusting organizational size (5 to 100 nodes) and another for the number of direct reports per manager (3 to 20) have been added to `App.tsx`. The visualization in `src/simulation/visualization.tsx` has been updated to render edges correctly in dark grey with increased visibility and to ensure all nodes are visible through dynamic zoom and translation. Core simulation logic and agent behaviors are yet to be implemented, following TDD principles.
 
 ## What Works
 - **Documentation Foundation**: The following Memory Bank files have been successfully created and populated with initial content:
@@ -12,12 +12,12 @@ The project has progressed beyond initial setup, with the visualization of organ
   - `techContext.md`: Lists technologies, setup, constraints, dependencies, and tool usage patterns.
 - **Project Initialization**: Vite project with React and TypeScript is set up at the repository root with necessary dependencies installed.
 - **Testing Setup**: Jest is configured for TypeScript with a test script added to package.json, ready for TDD cycles.
-- **Visualization Integration**: The `OrganizationGraph` component is integrated into `App.tsx`, rendering a force-directed graph of organizational structures using D3.js, with a slider to adjust the number of nodes dynamically.
+- **Visualization Integration**: The `OrganizationGraph` component is integrated into `App.tsx`, rendering a force-directed graph of organizational structures using D3.js, with sliders to adjust the number of nodes and direct reports per manager dynamically.
 - **Hierarchy Initialization**: Simplified edge generation logic in `src/simulation/state.ts` to create a balanced organizational hierarchy based on a specified number of direct reports per manager.
 - **Test Updates**: Updated test logic in `src/simulation/state.test.ts` to correctly identify deeper hierarchy levels by checking for nodes not directly reporting to the root manager, with all tests passing.
+- **Visualization Enhancements**: Updated `src/simulation/visualization.tsx` to render edges in dark grey with increased stroke width, corrected edge positioning using D3 simulation data, and implemented dynamic zoom to ensure all nodes are visible.
 
 ## What's Left to Build
-- Integrate another slider for the number of direct reports per manager to allow dynamic adjustment of hierarchy depth.
 - Implement first version of acting: submitting a product graph to be checked against the demand graph.
 - Split agent definition from org definition.
 - **Core Simulation Logic**: Implement pure functions with integrated testing for each increment following Test-Driven Development (TDD):
@@ -39,3 +39,4 @@ The project has progressed beyond initial setup, with the visualization of organ
 - **Testing Integration**: User requested testing be integrated into each feature development step rather than as a separate work package, aligning with TDD principles.
 - **Project Location**: User moved the Vite project content to the repository root to simplify structure, which was accounted for during dependency installation.
 - **Hierarchy Definition**: Updated test logic to reflect the user's definition of hierarchy levels, ensuring accurate validation of organizational structure.
+- **Visualization Adjustments**: User feedback led to multiple iterations on visualization to ensure edge visibility and proper zoom levels for viewing all nodes.
