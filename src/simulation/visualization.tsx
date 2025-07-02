@@ -31,29 +31,17 @@ const OrganizationGraph: React.FC<OrganizationGraphProps> = ({ state }) => {
 
     // Draw edges
     svg.append("g")
-      .attr("stroke", "#999")
-      .attr("stroke-width", 1.5)
+      .attr("stroke", "#333")
+      .attr("stroke-width", 2.5)
       .selectAll("line")
       .data(state.graph.edges)
       .enter()
       .append("line")
       .attr("role", "graphics-object")
-      .attr("x1", (d: any) => {
-        const sourceNode = state.graph.nodes.find(n => n.id === d.source);
-        return (sourceNode as any)?.x || 0;
-      })
-      .attr("y1", (d: any) => {
-        const sourceNode = state.graph.nodes.find(n => n.id === d.source);
-        return (sourceNode as any)?.y || 0;
-      })
-      .attr("x2", (d: any) => {
-        const targetNode = state.graph.nodes.find(n => n.id === d.target);
-        return (targetNode as any)?.x || 0;
-      })
-      .attr("y2", (d: any) => {
-        const targetNode = state.graph.nodes.find(n => n.id === d.target);
-        return (targetNode as any)?.y || 0;
-      });
+      .attr("x1", (d: any) => d.source.x || 0)
+      .attr("y1", (d: any) => d.source.y || 0)
+      .attr("x2", (d: any) => d.target.x || 0)
+      .attr("y2", (d: any) => d.target.y || 0);
 
     // Draw nodes
     svg.append("g")
