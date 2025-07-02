@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/35</span>
+                <span class='fraction'>0/33</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/35</span>
+                <span class='fraction'>0/33</span>
             </div>
         
             
@@ -96,11 +96,7 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -134,35 +130,33 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import { useState } from 'react'</span></span></span>
-<span class="cstat-no" title="statement not covered" >import reactLogo from './assets/react.svg'</span>
-<span class="cstat-no" title="statement not covered" >import viteLogo from '/vite.svg'</span>
 <span class="cstat-no" title="statement not covered" >import './App.css'</span>
+<span class="cstat-no" title="statement not covered" >import OrganizationGraph from './simulation/visualization'</span>
+<span class="cstat-no" title="statement not covered" >import { initializeOrganizationalState } from './simulation/state'</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >function App() {</span>
-<span class="cstat-no" title="statement not covered" >  const [count, setCount] = useState(0)</span>
+<span class="cstat-no" title="statement not covered" >  const [orgSize, setOrgSize] = useState(10)</span>
+<span class="cstat-no" title="statement not covered" >  const orgState = initializeOrganizationalState(orgSize, 2, 3)</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
 <span class="cstat-no" title="statement not covered" >    &lt;&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;div&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;a href="https://vite.dev" target="_blank"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;img src={viteLogo} className="logo" alt="Vite logo" /&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/a&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;a href="https://react.dev" target="_blank"&gt;</span>
-<span class="cstat-no" title="statement not covered" >          &lt;img src={reactLogo} className="logo react" alt="React logo" /&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/a&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;h1&gt;Organizational Simulation&lt;/h1&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;div style={{ marginTop: '20px', width: '100%' }}&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;h2&gt;Organizational Structure&lt;/h2&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;div style={{ marginBottom: '20px' }}&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;label htmlFor="orgSizeSlider"&gt;Organization Size: {orgSize}&lt;/label&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;input</span>
+<span class="cstat-no" title="statement not covered" >            id="orgSizeSlider"</span>
+<span class="cstat-no" title="statement not covered" >            type="range"</span>
+<span class="cstat-no" title="statement not covered" >            min="5"</span>
+<span class="cstat-no" title="statement not covered" >            max="50"</span>
+<span class="cstat-no" title="statement not covered" >            value={orgSize}</span>
+<span class="cstat-no" title="statement not covered" >            onChange={(e) =&gt; setOrgSize(parseInt(e.target.value))}</span>
+<span class="cstat-no" title="statement not covered" >            style={{ width: '300px', marginLeft: '10px' }}</span>
+<span class="cstat-no" title="statement not covered" >          /&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;OrganizationGraph state={orgState} /&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;h1&gt;Vite + React&lt;/h1&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;div className="card"&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;button onClick={() =&gt; setCount((count) =&gt; count + 1)}&gt;</span>
-<span class="cstat-no" title="statement not covered" >          count is {count}</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/button&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;p&gt;</span>
-<span class="cstat-no" title="statement not covered" >          Edit &lt;code&gt;src/App.tsx&lt;/code&gt; and save to test HMR</span>
-<span class="cstat-no" title="statement not covered" >        &lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;p className="read-the-docs"&gt;</span>
-<span class="cstat-no" title="statement not covered" >        Click on the Vite and React logos to learn more</span>
-<span class="cstat-no" title="statement not covered" >      &lt;/p&gt;</span>
 <span class="cstat-no" title="statement not covered" >    &lt;/&gt;</span>
 <span class="cstat-no" title="statement not covered" >  )</span>
 <span class="cstat-no" title="statement not covered" >}</span>
@@ -175,7 +169,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-01T16:56:54.577Z
+                at 2025-07-02T16:39:50.871Z
             </div>
         <script src="../prettify.js"></script>
         <script>
