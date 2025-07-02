@@ -1,7 +1,7 @@
 # Progress: Organizational Simulation
 
 ## Current Status
-The project has completed the initial setup phase. The TypeScript project using Vite for React has been initialized at the root of the repository, and necessary dependencies for visualization (D3.js) and testing (Jest, @testing-library/react) have been installed. Jest configuration and setup files have been created to enable Test-Driven Development (TDD). No functional simulation logic has been implemented yet.
+The project has progressed beyond initial setup, with the visualization of organizational structures integrated into the main application. A dynamic slider for adjusting organizational size (5 to 50 nodes) has been added to `App.tsx`. Core simulation logic and agent behaviors are yet to be implemented, following TDD principles.
 
 ## What Works
 - **Documentation Foundation**: The following Memory Bank files have been successfully created and populated with initial content:
@@ -12,19 +12,21 @@ The project has completed the initial setup phase. The TypeScript project using 
   - `techContext.md`: Lists technologies, setup, constraints, dependencies, and tool usage patterns.
 - **Project Initialization**: Vite project with React and TypeScript is set up at the repository root with necessary dependencies installed.
 - **Testing Setup**: Jest is configured for TypeScript with a test script added to package.json, ready for TDD cycles.
+- **Visualization Integration**: The `OrganizationGraph` component is integrated into `App.tsx`, rendering a force-directed graph of organizational structures using D3.js, with a slider to adjust the number of nodes dynamically.
 
 ## What's Left to Build
-- Integrate visualization into the app
+- Integrate another slider for the number of direct reports per manager
 - Implement first version of acting: submitting a product graph to be checked against the demand graph
 - Split agent definition from org definition
+- Implement first version of acting: submitting a product graph to be checked against the demand graph.
+- Split agent definition from org definition.
 - **Core Simulation Logic**: Implement pure functions with integrated testing for each increment following Test-Driven Development (TDD):
-  - Organizational state management (n-dimensional vectors and graph structures for traditional and agile setups), starting with a failing test for state initialization, then implementing minimal logic to pass.
   - Agent behavior (idea generation, act, delegate, break down, reject) as declarative state transformations, with tests written before each behavior implementation.
   - Goal dynamics with configurable change frequencies, tested for correct state updates on change triggers.
   - Simulation engine to manage time steps and state transitions, with tests ensuring correct progression and state handling.
 - **Performance Metrics**: Create functions to calculate and compare metrics (time to goal, efficiency, delegation frequency, rejection rates) for traditional vs. agile organizations under varying conditions (goal dimensionality 2-10, change frequency), with tests validating metric accuracy.
 - **Deployment**: Configure and deploy the application to GitHub Pages for public access, ensuring deployment scripts are tested for successful builds.
-- Review the dependencies and remove unnecessary ones
+- Review the dependencies and remove unnecessary ones.
 
 ## Known Issues
 - A warning was noted during dependency installation about an unsupported engine for Vite (required Node.js version ^20.19.0 or >=22.12.0, current version v22.11.0). This has not caused immediate issues but may need to be addressed if compatibility problems arise.

@@ -1,33 +1,31 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import OrganizationGraph from './simulation/visualization'
+import { initializeOrganizationalState } from './simulation/state'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [orgSize, setOrgSize] = useState(10)
+  const orgState = initializeOrganizationalState(orgSize, 2, 3)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Organizational Simulation</h1>
+      <div style={{ marginTop: '20px', width: '100%' }}>
+        <h2>Organizational Structure</h2>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor="orgSizeSlider">Organization Size: {orgSize}</label>
+          <input
+            id="orgSizeSlider"
+            type="range"
+            min="5"
+            max="50"
+            value={orgSize}
+            onChange={(e) => setOrgSize(parseInt(e.target.value))}
+            style={{ width: '300px', marginLeft: '10px' }}
+          />
+        </div>
+        <OrganizationGraph state={orgState} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
