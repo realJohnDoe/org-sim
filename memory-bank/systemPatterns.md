@@ -6,8 +6,8 @@ The organizational simulation is designed as a modular, web-based application us
 - **Data Structures**: 
   - Organizational state represented as immutable data structures, including an n-dimensional vector for position and a graph (as nested immutable objects) for structure (deep hierarchy for traditional, flatter for agile).
   - Agent capabilities defined as supply trees, representing their capabilities as immutable hierarchical structures.
-  - Agent demand models represented as trees, capturing their understanding of tasks or goals in the world as mutable data that can be updated when getting new context from their peers.
-  - Agent actions modeled as submitting product trees, which are shallow subsets of their supply trees and subsets of their demand models, with rewards calculated based on alignment with the real (secret) demand model.
+  - Agent demand models represented as trees, capturing their understanding of tasks or goals in the world as mutable data that can be updated when getting new context from their peers, highlighting the dynamic nature of agent learning through interaction.
+  - Agent actions modeled as submitting product trees, which are shallow subsets of their supply trees and subsets of their demand models, with rewards calculated based on alignment with the real (secret) demand model, introducing a challenge for simulation logic focused on approximation and learning.
   - Goals modeled as immutable target vectors in n-dimensional space with associated change frequency parameters.
   - Ideas represented as proposed movement vectors, immutable until transformed by agent decisions.
 - **Simulation Logic**: 
@@ -44,5 +44,5 @@ The organizational simulation is designed as a modular, web-based application us
 ## Critical Implementation Paths
 - **Initialization**: Declaratively define initial state by composing functions to generate organizational graphs (traditional/agile), agent capability vectors as supply trees, demand model trees, and initial goals as immutable data structures.
 - **Simulation Step**: Each step is a pure function transforming the current state into a new state by mapping over agents for decisions (request context, share context, act), updating positions based on actions, checking goal conditions, and applying changes if triggered, all without side effects.
-- **Visualization Update**: Declaratively map current state to visual representations after each step or on user input, ensuring UI reflects data directly through React and D3.js bindings.
+- **Visualization Update**: Declaratively map current state to visual representations after each step or on user input, ensuring UI reflects data directly through React and D3.js bindings. Enhanced with dynamic zoom calculations based on node bounding boxes to ensure all elements are visible, and corrected edge rendering using direct simulation references for accurate positioning.
 - **Performance Metrics**: Compute metrics as pure reductions over state history, extracting data like time to goal, action counts (including context requests, shares, and product submissions), delegation frequency, and rejection rates for comparing traditional vs. agile setups under varied conditions.

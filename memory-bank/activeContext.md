@@ -14,6 +14,7 @@
 - Previously integrated `OrganizationGraph` component into `App.tsx`, initializing organizational state with adjustable size (5 to 50 nodes), 2 dimensions, and 3 hierarchy levels.
 - Simplified the edge generation logic in `src/simulation/state.ts` to use a sequential assignment of managers, ensuring a balanced hierarchy structure with a limit on direct reports per manager.
 - Updated the test `should create third hierarchy level for size 7 and 2 direct reports` in `src/simulation/state.test.ts` to check for nodes not directly reporting to the root manager as an indication of deeper hierarchy levels, resolving the failing test.
+- Created a summary of learning logs for July 1 and 2, 2025, in `memory-bank/learning-log/2025-07-summary-1.md`, consolidating key learnings by topic for project documentation.
 
 ## Next Steps
 - Begin implementing agent behavior logic with TDD, starting with the concept of agents submitting a product graph (a shallow subset of their supply tree and a subset of their demand model) to be checked against the demand graph, with rewards based on matching the real (secret) demand model.

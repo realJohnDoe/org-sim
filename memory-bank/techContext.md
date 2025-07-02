@@ -12,7 +12,7 @@
 - **Project Initialization**: Use Vite to scaffold a new React + TypeScript project, with configuration for GitHub Pages deployment via the `vite-plugin-gh-pages` or similar plugin.
 - **Editor**: Recommended to use Visual Studio Code with extensions for TypeScript, React, and Markdown for editing code and Memory Bank documentation.
 - **Version Control**: Git for tracking changes, with commits structured to separate meta, structural, and behavioral changes as per Tidy First principles.
-- **Testing Setup**: Jest configured for TypeScript, with test files colocated with source files or in a dedicated `tests/` directory, running automatically on code changes during development.
+- **Testing Setup**: Jest configured for TypeScript, with test files colocated with source files or in a dedicated `tests/` directory, running automatically on code changes during development. Configuration challenges with ES module scope resolved by renaming files to '.cjs' and using transformers like 'ts-jest' and '@swc/jest' for ESM compatibility, especially with libraries like D3.js.
 
 ## Technical Constraints
 - **Browser Compatibility**: The simulation must run on modern web browsers (Chrome, Firefox, Edge) without requiring additional plugins, targeting deployment on GitHub Pages.
@@ -35,7 +35,7 @@
 
 ## Tool Usage Patterns
 - **Vite Workflow**: Use `npm run dev` for local development with hot reloading, `npm run build` for production builds, and a custom script for deploying to GitHub Pages.
-- **Jest Testing**: Tests run with `npm test`, focusing on pure function outputs for given state inputs, ensuring simulation logic correctness before UI integration.
+- **Jest Testing**: Tests run with `npm test`, focusing on pure function outputs for given state inputs, ensuring simulation logic correctness before UI integration. Specific configurations like 'transformIgnorePatterns' adjusted to handle ESM modules from 'node_modules', with '@swc/jest' proving effective for transformation.
 - **TypeScript Compilation**: Configured with strict type checking in `tsconfig.json` to enforce functional programming patterns and prevent runtime errors.
 - **React Components**: Developed declaratively, mapping simulation state to UI elements, with minimal local state to maintain functional purity.
 - **D3.js Integration**: Used within React components via hooks or lifecycle methods to bind simulation data to SVG elements, ensuring visualizations update with state changes.

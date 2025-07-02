@@ -10,6 +10,7 @@ The project has progressed with the integration of UI controls and visualization
   - `activeContext.md`: Captures current work focus, recent changes, next steps, decisions, patterns, and early learnings.
   - `systemPatterns.md`: Details the functional and declarative architecture, technical decisions, design patterns, and implementation paths.
   - `techContext.md`: Lists technologies, setup, constraints, dependencies, and tool usage patterns.
+  - Learning log summary `2025-07-summary-1.md` consolidates key learnings for July 1 and 2, 2025, by topic in `memory-bank/learning-log/`.
 - **Project Initialization**: Vite project with React and TypeScript is set up at the repository root with necessary dependencies installed.
 - **Testing Setup**: Jest is configured for TypeScript with a test script added to package.json, ready for TDD cycles.
 - **Visualization Integration**: The `OrganizationGraph` component is integrated into `App.tsx`, rendering a force-directed graph of organizational structures using D3.js, with sliders to adjust the number of nodes and direct reports per manager dynamically.
