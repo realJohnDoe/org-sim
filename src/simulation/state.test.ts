@@ -35,11 +35,8 @@ describe('Organizational State Initialization', () => {
 
     expect(state.graph.nodes).toHaveLength(size);
     expect(state.graph.edges).toHaveLength(size - 1); // 6 edges for 7 nodes
-    // Check for third level: at least one node should have a source that is not the top manager (id 0) or a direct report of the top manager
-    const secondLevelManagers = state.graph.edges.filter(edge => edge.source === 0).map(edge => edge.target);
-    const hasThirdLevel = state.graph.edges.some(edge => 
-      !secondLevelManagers.includes(edge.source) && edge.source !== 0
-    );
-    expect(hasThirdLevel).toBe(true); // There should be a third hierarchy level
+    // Check for third level: at least one node should have a source that is not the top manager (id 0)
+    const hasThirdLevelOrBelow = state.graph.edges.some(edge => edge.source !== 0);
+    expect(hasThirdLevelOrBelow).toBe(true); // There should be nodes not directly reporting to the root manager
   });
 });
