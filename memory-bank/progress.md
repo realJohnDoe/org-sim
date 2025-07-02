@@ -14,7 +14,10 @@ The project has completed the initial setup phase. The TypeScript project using 
 - **Testing Setup**: Jest is configured for TypeScript with a test script added to package.json, ready for TDD cycles.
 
 ## What's Left to Build
-- [x] Add visualization for existing organization
+- Integrate visualization into the app
+- Update Memory Bank with new idea about modeling agent capabilities  as a supply trees, actions as submitting a product tree, and the agent's supply model as a tree
+- Update the Memory bank to have three agent actions: request context, sharing context, and acting.
+- Implement first version of acting: submitting a product graph to be checked against the demand graph
 - Split agent definition from org definition
 - **Core Simulation Logic**: Implement pure functions with integrated testing for each increment following Test-Driven Development (TDD):
   - Organizational state management (n-dimensional vectors and graph structures for traditional and agile setups), starting with a failing test for state initialization, then implementing minimal logic to pass.
