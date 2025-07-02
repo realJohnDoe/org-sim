@@ -5,7 +5,8 @@ import { initializeOrganizationalState } from './simulation/state'
 
 function App() {
   const [orgSize, setOrgSize] = useState(10)
-  const orgState = initializeOrganizationalState(orgSize, 2, 3)
+  const [directReports, setDirectReports] = useState(3)
+  const orgState = initializeOrganizationalState(orgSize, 2, directReports)
 
   return (
     <>
@@ -21,6 +22,18 @@ function App() {
             max="50"
             value={orgSize}
             onChange={(e) => setOrgSize(parseInt(e.target.value))}
+            style={{ width: '300px', marginLeft: '10px' }}
+          />
+        </div>
+        <div style={{ marginBottom: '20px' }}>
+          <label htmlFor="directReportsSlider">Direct Reports per Manager: {directReports}</label>
+          <input
+            id="directReportsSlider"
+            type="range"
+            min="2"
+            max="5"
+            value={directReports}
+            onChange={(e) => setDirectReports(parseInt(e.target.value))}
             style={{ width: '300px', marginLeft: '10px' }}
           />
         </div>
