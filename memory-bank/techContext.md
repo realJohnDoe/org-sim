@@ -34,9 +34,10 @@
   - `eslint`, `@typescript-eslint/parser`, `@typescript-eslint/eslint-plugin`: For linting and maintaining code quality.
 
 ## Tool Usage Patterns
-- **Vite Workflow**: Use `npm run dev` for local development with hot reloading, `npm run build` for production builds, and a custom script for deploying to GitHub Pages.
+- **Vite Workflow**: Use `npm run dev` for local development with hot reloading, `npm run build` for production builds. Deployment to GitHub Pages is automated via a GitHub Actions workflow.
 - **Jest Testing**: Tests run with `npm test`, focusing on pure function outputs for given state inputs, ensuring simulation logic correctness before UI integration. Specific configurations like 'transformIgnorePatterns' adjusted to handle ESM modules from 'node_modules', with '@swc/jest' proving effective for transformation.
 - **TypeScript Compilation**: Configured with strict type checking in `tsconfig.json` to enforce functional programming patterns and prevent runtime errors.
 - **React Components**: Developed declaratively, mapping simulation state to UI elements, with minimal local state to maintain functional purity.
 - **D3.js Integration**: Used within React components via hooks or lifecycle methods to bind simulation data to SVG elements, ensuring visualizations update with state changes.
 - **Documentation Updates**: Memory Bank files updated after significant changes or user requests using Markdown, with VSCode or similar editors for easy editing and preview.
+- **GitHub Actions**: A workflow is set up in `.github/workflows/deploy.yml` to automatically deploy the application to GitHub Pages on push to the main branch.
