@@ -5,11 +5,14 @@ The organizational simulation is designed as a modular, web-based application us
 
 - **Data Structures**: 
   - Organizational state represented as immutable data structures, including an n-dimensional vector for position and a graph (as nested immutable objects) for structure (deep hierarchy for traditional, flatter for agile).
-  - Agent capabilities and states defined as immutable records with vectors for capabilities.
+  - Agent capabilities defined as supply trees, representing their capabilities as immutable hierarchical structures.
+  - Agent demand models represented as trees, capturing their understanding of tasks or goals in the world as mutable data that can be updated when getting new context from their peers.
+  - Agent actions modeled as submitting product trees, which are shallow subsets of their supply trees and subsets of their demand models, with rewards calculated based on alignment with the real (secret) demand model.
   - Goals modeled as immutable target vectors in n-dimensional space with associated change frequency parameters.
   - Ideas represented as proposed movement vectors, immutable until transformed by agent decisions.
 - **Simulation Logic**: 
   - Composed of pure functions that transform state based on agent decisions, goal updates, and time steps, producing new state without side effects.
+  - Agent behavior includes three primary actions: requesting context, sharing context, and acting (submitting a product graph to be checked against the demand graph).
   - Performance metrics calculated declaratively from state history (e.g., time to reach goal, efficiency).
 - **Visualization Layer**: 
   - Built with React for declarative UI rendering and D3.js for data-driven visualizations of organizational graphs and movement projections (n-dimensional to 2D/3D).
@@ -27,19 +30,19 @@ The organizational simulation is designed as a modular, web-based application us
 
 ## Design Patterns in Use
 - **Immutable State**: All data structures are immutable, with transformations creating new copies rather than modifying in place, aligning with functional programming principles.
-- **Higher-Order Functions**: Simulation logic uses functions that accept other functions as parameters to handle varied agent behaviors (act, delegate, break down, reject) in a declarative manner.
+- **Higher-Order Functions**: Simulation logic uses functions that accept other functions as parameters to handle varied agent behaviors (request context, share context, act) in a declarative manner.
 - **Declarative Data Flow**: State updates and visualizations are expressed as transformations and mappings from input data to output states or DOM elements, avoiding imperative control flows.
 - **Composition over Inheritance**: Behaviors and logic are composed from small, reusable functions rather than relying on class hierarchies or object-oriented patterns.
 
 ## Component Relationships
 - The organizational state is a central immutable data structure, transformed by pure functions in the simulation logic to reflect agent decisions and goal updates.
-- Agent decision-making is modeled as a set of pure functions that take current state (organization, agents, ideas, goals) and return a new state based on rules for acting, delegating, breaking down, or rejecting ideas.
+- Agent decision-making is modeled as a set of pure functions that take current state (organization, agents, ideas, goals) and return a new state based on rules for requesting context, sharing context, and acting (submitting product trees for evaluation against demand models).
 - The simulation engine operates as a pipeline of state transformations, folding over time steps to produce a sequence of states, each derived declaratively from the last.
 - The visualization layer binds to the current state declaratively, using React's component model and D3.js's data joins to render graphs and metrics without manual DOM manipulation.
 - User interactions update configuration parameters, which are fed into the simulation's state transformation pipeline to influence future states.
 
 ## Critical Implementation Paths
-- **Initialization**: Declaratively define initial state by composing functions to generate organizational graphs (traditional/agile), agent capability vectors, and initial goals as immutable data structures.
-- **Simulation Step**: Each step is a pure function transforming the current state into a new state by mapping over agents for decisions, updating positions based on actions, checking goal conditions, and applying changes if triggered, all without side effects.
+- **Initialization**: Declaratively define initial state by composing functions to generate organizational graphs (traditional/agile), agent capability vectors as supply trees, demand model trees, and initial goals as immutable data structures.
+- **Simulation Step**: Each step is a pure function transforming the current state into a new state by mapping over agents for decisions (request context, share context, act), updating positions based on actions, checking goal conditions, and applying changes if triggered, all without side effects.
 - **Visualization Update**: Declaratively map current state to visual representations after each step or on user input, ensuring UI reflects data directly through React and D3.js bindings.
-- **Performance Metrics**: Compute metrics as pure reductions over state history, extracting data like time to goal, action counts, delegation frequency, and rejection rates for comparing traditional vs. agile setups under varied conditions.
+- **Performance Metrics**: Compute metrics as pure reductions over state history, extracting data like time to goal, action counts (including context requests, shares, and product submissions), delegation frequency, and rejection rates for comparing traditional vs. agile setups under varied conditions.

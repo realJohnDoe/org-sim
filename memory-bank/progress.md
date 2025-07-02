@@ -15,8 +15,6 @@ The project has completed the initial setup phase. The TypeScript project using 
 
 ## What's Left to Build
 - Integrate visualization into the app
-- Update Memory Bank with new idea about modeling agent capabilities  as a supply trees, actions as submitting a product tree, and the agent's supply model as a tree
-- Update the Memory bank to have three agent actions: request context, sharing context, and acting.
 - Implement first version of acting: submitting a product graph to be checked against the demand graph
 - Split agent definition from org definition
 - **Core Simulation Logic**: Implement pure functions with integrated testing for each increment following Test-Driven Development (TDD):
@@ -38,5 +36,3 @@ The project has completed the initial setup phase. The TypeScript project using 
 - **Documentation Priority**: User emphasized setting up the Memory Bank first, ensuring all context is captured before coding begins, aligning with guidelines for memory reset continuity.
 - **Testing Integration**: User requested testing be integrated into each feature development step rather than as a separate work package, aligning with TDD principles.
 - **Project Location**: User moved the Vite project content to the repository root to simplify structure, which was accounted for during dependency installation.
-
-
