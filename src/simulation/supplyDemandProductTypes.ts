@@ -1,6 +1,6 @@
-export interface Node {
+export interface TreeNode {
   id: string;
   label: string;
   value: number;
-  children: string[];
+  children: TreeNode[];
 }
