@@ -61,6 +61,26 @@ const mockRealDemand: TreeNode = {
   ]
 };
 
+const mismatchedProductGraph: TreeNode = {
+  id: '2',
+  label: 'Product Root',
+  value: 5,
+  children: [
+    {
+      id: '7',
+      label: 'Feature 1',
+      value: 3,
+      children: []
+    },
+    {
+      id: '6',
+      label: 'Feature 2',
+      value: 2,
+      children: []
+    }
+  ]
+};
+
 describe('Agent Behavior - Act Action', () => {
   test('shouldSubmitProductGraphAndReturnDealBasedOnAlignment', () => {
     // Arrange
@@ -76,25 +96,7 @@ describe('Agent Behavior - Act Action', () => {
 
   test('shouldReturnZeroIfProductStructureDoesNotMatchRealDemand', () => {
     // Arrange
-    const mismatchedProductGraph: TreeNode = {
-      id: '2',
-      label: 'Product Root',
-      value: 5,
-      children: [
-        {
-          id: '7',
-          label: 'Feature 1',
-          value: 3,
-          children: []
-        },
-        {
-          id: '6',
-          label: 'Feature 2',
-          value: 2,
-          children: []
-        }
-      ]
-    };
+    
     const expectedResult = 0; // Expect zero due to structural mismatch
 
     // Act
