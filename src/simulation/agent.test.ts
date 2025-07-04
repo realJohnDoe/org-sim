@@ -81,9 +81,28 @@ const mismatchedProductGraph: TreeNode = {
   ]
 };
 
+const lowValueProductGraph: TreeNode = {
+  id: '2',
+  label: 'Product Root',
+  value: 2, // Less than demand value of 3
+  children: [
+    {
+      id: '5',
+      label: 'Feature 1',
+      value: 1,
+      children: []
+    },
+    {
+      id: '6',
+      label: 'Feature 2',
+      value: 1,
+      children: []
+    }
+  ]
+};
+
 describe('Agent Behavior - Act Action', () => {
   test('shouldSubmitProductGraphAndReturnDealBasedOnAlignment', () => {
-    // Arrange
     const expectedResult = 5; // Assuming the product graph aligns sufficiently for a deal
 
     // Act
@@ -95,8 +114,6 @@ describe('Agent Behavior - Act Action', () => {
   });
 
   test('shouldReturnZeroIfProductStructureDoesNotMatchRealDemand', () => {
-    // Arrange
-    
     const expectedResult = 0; // Expect zero due to structural mismatch
 
     // Act
@@ -105,5 +122,16 @@ describe('Agent Behavior - Act Action', () => {
     // Assert
     expect(result).toBeDefined();
     expect(result).toBe(expectedResult); // Check if the result is zero due to mismatch
+  });
+
+  test('shouldReturnZeroIfAnyProductNodeValueLessThanDemand', () => {
+    const expectedResult = 0; // Expect zero due to value mismatch
+
+    // Act
+    const result = submitProductGraph(lowValueProductGraph, mockRealDemand);
+
+    // Assert
+    expect(result).toBeDefined();
+    expect(result).toBe(expectedResult); // Check if the result is zero due to value less than demand
   });
 });

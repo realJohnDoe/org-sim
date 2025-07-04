@@ -26,15 +26,16 @@ export function submitProductGraph(productGraph: TreeNode, realDemand: TreeNode)
   buildNodeMap(productGraph, productNodesById);
   buildNodeMap(realDemand, realDemandById);
   
-  // Check structure and sum values
+  // Check structure and values
   for (const [id, demandNode] of realDemandById) {
     if (productNodesById.has(id)) {
       const productNode = productNodesById.get(id);
       if (productNode && hasMatchingStructure(productNode, demandNode)) {
-        console.log(`Matching demand node found with matching structure: ${demandNode.label} with value ${demandNode.value}`);
+        if (productNode.value < demandNode.value) {
+          return 0; // Return 0 if product node value is less than demand node value
+        }
         totalValue += demandNode.value;
       } else {
-        console.log(`Matching demand node found but structure mismatch: ${demandNode?.label || id}`);
         return 0; // Return 0 if structure does not match for any node
       }
     }
