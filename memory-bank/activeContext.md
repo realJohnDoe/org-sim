@@ -1,12 +1,14 @@
 # Active Context for Organizational Simulation
 
 ## Current Focus
-- Integrated a slider in `App.tsx` for adjusting the number of direct reports per manager, allowing dynamic control over hierarchy depth.
-- Enhanced the visualization in `src/simulation/visualization.tsx` to ensure edges are correctly rendered in dark grey with increased stroke width.
-- Implemented dynamic zoom level in the visualization to ensure all nodes are visible within the viewable area.
-- Updating Memory Bank documentation to reflect the current state and plan next steps for agent behavior implementation.
+- Implemented the first version of agent behavior for the 'act' or 'release' action in `src/simulation/agent.ts`, ensuring `submitProductGraph` returns 0 if not all product nodes meet or exceed demand node values.
+- Refactored tree representation to use a recursive `TreeNode` type in `src/simulation/supplyDemandProductTypes.ts`, enforcing proper connectivity through typing.
+- Updating Memory Bank documentation to reflect the current state and learnings from recent agent behavior implementation.
 
 ## Recent Changes
+- Implemented a new test `shouldReturnZeroIfAnyProductNodeValueLessThanDemand` in `src/simulation/agent.test.ts` to ensure `submitProductGraph` returns 0 if any product node's value is less than its demand counterpart.
+- Updated `src/simulation/agent.ts` to check node values in `submitProductGraph`, returning 0 if any product node's value is less than the corresponding demand node's value.
+- Refactored tree representation in `src/simulation/supplyDemandProductTypes.ts` to use a recursive `TreeNode` type with nested children, updating `src/simulation/agent.ts` and `src/simulation/agent.test.ts` to handle the hierarchical structure.
 - Updated GitHub Actions workflow reference to `github/workflows/pages.yml` for automated deployment to GitHub Pages, which has been successfully tested on mobile devices. Updated `vite.config.ts` to set the base path for GitHub Pages as '/org-sim/'.
 - Added a slider UI element in `App.tsx` for setting the number of direct reports per manager (range 2 to 5), updating the organizational state initialization to use this dynamic value.
 - Updated `src/simulation/visualization.tsx` to change edge color to dark grey ("#333") and increased stroke width to 2.5 for better visibility.
@@ -18,7 +20,7 @@
 - Created a summary of learning logs for July 1 and 2, 2025, in `memory-bank/learning-log/2025-07-summary-1.md`, consolidating key learnings by topic for project documentation.
 
 ## Next Steps
-- Begin implementing agent behavior logic with TDD, starting with the concept of agents submitting a product graph (a shallow subset of their supply tree and a subset of their demand model) to be checked against the demand graph, with rewards based on matching the real (secret) demand model.
+- Continue implementing agent behavior logic with TDD, focusing on the remaining actions: requesting context and sharing context, to complete the set of agent interactions.
 - Enhance visualization with additional features such as node labeling, interactive zooming, or color-coding based on capabilities.
 - Write tests for user interactions with the visualization if additional interactive features are added.
 - Document and refine the three agent actions: requesting context, sharing context, and acting.
@@ -35,6 +37,9 @@
 - Maintain separation of structural and behavioral changes in commits, ensuring tests pass before and after structural refactoring.
 
 ## Learnings and Project Insights
+- Representing tree structures as recursive types in TypeScript (`TreeNode` with nested children) enforces proper connectivity and prevents issues like cycles or disconnected nodes, improving data integrity over flat list representations.
+- When implementing agent behavior, checking product node values against demand node values before summing ensures that only valid submissions are rewarded, aligning with the simulation's goal of modeling realistic decision-making.
+- Following TDD principles by adding a failing test first (e.g., for value comparison in `submitProductGraph`) and then updating the implementation ensures robust functionality and prevents regressions.
 - Configuring Jest to handle ESM modules from `node_modules` (like D3.js) requires specific transformer settings; `@swc/jest` was effective for this project.
 - TypeScript configuration challenges with `esModuleInterop` highlighted the importance of consistent import styles across the codebase.
 - Simple UI interactions like sliders can effectively control simulation parameters, enhancing user engagement with the visualization.

@@ -1,7 +1,7 @@
 # Progress: Organizational Simulation
 
 ## Current Status
-The project has progressed with the integration of UI controls and visualization enhancements for organizational structures. A dynamic slider for adjusting organizational size (5 to 100 nodes) and another for the number of direct reports per manager (3 to 20) have been added to `App.tsx`. The visualization in `src/simulation/visualization.tsx` has been updated to render edges correctly in dark grey with increased visibility and to ensure all nodes are visible through dynamic zoom and translation. Core simulation logic and agent behaviors are yet to be implemented, following TDD principles.
+The project has progressed with the integration of UI controls, visualization enhancements, and the initial implementation of agent behavior for organizational structures. A dynamic slider for adjusting organizational size (5 to 50 nodes) and another for the number of direct reports per manager (2 to 5) have been added to `App.tsx`. The visualization in `src/simulation/visualization.tsx` has been updated to render edges correctly in dark grey with increased visibility and to ensure all nodes are visible through dynamic zoom and translation. The first version of the 'act' or 'release' action has been implemented in `src/simulation/agent.ts`, ensuring `submitProductGraph` returns 0 if not all product nodes meet or exceed demand node values, following TDD principles.
 
 ## What Works
 - **Documentation Foundation**: The following Memory Bank files have been successfully created and populated with initial content:
@@ -17,12 +17,13 @@ The project has progressed with the integration of UI controls and visualization
 - **Hierarchy Initialization**: Simplified edge generation logic in `src/simulation/state.ts` to create a balanced organizational hierarchy based on a specified number of direct reports per manager.
 - **Test Updates**: Updated test logic in `src/simulation/state.test.ts` to correctly identify deeper hierarchy levels by checking for nodes not directly reporting to the root manager, with all tests passing.
 - **Visualization Enhancements**: Updated `src/simulation/visualization.tsx` to render edges in dark grey with increased stroke width, corrected edge positioning using D3 simulation data, and implemented dynamic zoom to ensure all nodes are visible.
+- **Agent Behavior Implementation**: Implemented the first version of the 'act' or 'release' action in `src/simulation/agent.ts` with `submitProductGraph`, which returns 0 if structures don't match or if any product node's value is less than its demand counterpart, verified by tests in `src/simulation/agent.test.ts`.
+- **Tree Structure Refactoring**: Refactored tree representation to use a recursive `TreeNode` type in `src/simulation/supplyDemandProductTypes.ts`, ensuring proper connectivity through typing, with corresponding updates in `src/simulation/agent.ts` and `src/simulation/agent.test.ts`.
 
 ## What's Left to Build
-- Implement first version of acting: submitting a product graph to be checked against the demand graph.
-- Split agent definition from org definition.
+- Add releases of the agents to the visualization.
 - **Core Simulation Logic**: Implement pure functions with integrated testing for each increment following Test-Driven Development (TDD):
-  - Agent behavior (idea generation, act, delegate, break down, reject) as declarative state transformations, with tests written before each behavior implementation.
+  - Agent behavior (Contributing, Request contributions) as declarative state transformations, with tests written before each behavior implementation.
   - Goal dynamics with configurable change frequencies, tested for correct state updates on change triggers.
   - Simulation engine to manage time steps and state transitions, with tests ensuring correct progression and state handling.
 - **Performance Metrics**: Create functions to calculate and compare metrics (time to goal, efficiency, delegation frequency, rejection rates) for traditional vs. agile organizations under varying conditions (goal dimensionality 2-10, change frequency), with tests validating metric accuracy.
