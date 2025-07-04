@@ -81,6 +81,137 @@ const mismatchedProductGraph: TreeNode = {
   ]
 };
 
+// Example product graph for a Smartphone
+const smartphoneProductGraph: TreeNode = {
+  id: 'SP1',
+  label: 'Smartphone',
+  value: 500,
+  children: [
+    {
+      id: 'SP1-1',
+      label: 'Screen',
+      value: 100,
+      children: [
+        {
+          id: 'SP1-1-1',
+          label: 'Display Panel',
+          value: 70,
+          children: []
+        },
+        {
+          id: 'SP1-1-2',
+          label: 'Touch Layer',
+          value: 30,
+          children: []
+        }
+      ]
+    },
+    {
+      id: 'SP1-2',
+      label: 'Battery',
+      value: 80,
+      children: []
+    },
+    {
+      id: 'SP1-3',
+      label: 'Processor',
+      value: 150,
+      children: [
+        {
+          id: 'SP1-3-1',
+          label: 'CPU',
+          value: 90,
+          children: []
+        },
+        {
+          id: 'SP1-3-2',
+          label: 'GPU',
+          value: 60,
+          children: []
+        }
+      ]
+    },
+    {
+      id: 'SP1-4',
+      label: 'Camera',
+      value: 70,
+      children: []
+    }
+  ]
+};
+
+// Example product graph for a Car
+const carProductGraph: TreeNode = {
+  id: 'C1',
+  label: 'Car',
+  value: 20000,
+  children: [
+    {
+      id: 'C1-1',
+      label: 'Engine',
+      value: 5000,
+      children: [
+        {
+          id: 'C1-1-1',
+          label: 'Engine Block',
+          value: 3000,
+          children: []
+        },
+        {
+          id: 'C1-1-2',
+          label: 'Transmission',
+          value: 2000,
+          children: []
+        }
+      ]
+    },
+    {
+      id: 'C1-2',
+      label: 'Chassis',
+      value: 4000,
+      children: []
+    },
+    {
+      id: 'C1-3',
+      label: 'Interior',
+      value: 3000,
+      children: [
+        {
+          id: 'C1-3-1',
+          label: 'Seats',
+          value: 1500,
+          children: []
+        },
+        {
+          id: 'C1-3-2',
+          label: 'Dashboard',
+          value: 1500,
+          children: []
+        }
+      ]
+    },
+    {
+      id: 'C1-4',
+      label: 'Wheels',
+      value: 2000,
+      children: [
+        {
+          id: 'C1-4-1',
+          label: 'Tires',
+          value: 1200,
+          children: []
+        },
+        {
+          id: 'C1-4-2',
+          label: 'Rims',
+          value: 800,
+          children: []
+        }
+      ]
+    }
+  ]
+};
+
 const lowValueProductGraph: TreeNode = {
   id: '2',
   label: 'Product Root',
