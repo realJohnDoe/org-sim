@@ -25,7 +25,6 @@ export function initializeOrganizationalState(size: number, dimensions: number, 
       edges.push({ source: currentManager, target: i });
       reportsCount++;
     }
-    console.log('Final edges:', edges);
   }
 
   return {
